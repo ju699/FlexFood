@@ -1,0 +1,18 @@
+{
+  "hosting": [
+    {
+      "source": "../frontend",
+      "frameworksBackend": true
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs20"
+  }
+}
