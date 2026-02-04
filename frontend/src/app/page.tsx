@@ -138,21 +138,6 @@ export default function Home() {
               <a href="#pricing" className="text-sm text-gray-400 hover:text-white transition-colors">Tarifs</a>
               <a href="#docs" className="text-sm text-gray-400 hover:text-white transition-colors">Documentation</a>
             </div>
-
-            <div className="flex items-center gap-3">
-              <a 
-                href="/login" 
-                className="px-4 py-2 text-sm text-gray-300 hover:text-white transition-colors"
-              >
-                Connexion
-              </a>
-              <a 
-                href="/signup" 
-                className="px-5 py-2.5 bg-gradient-to-r from-red-500 to-orange-600 text-white rounded-lg text-sm font-medium hover:from-red-600 hover:to-orange-700 transition-all shadow-lg shadow-red-500/20"
-              >
-                Commencer
-              </a>
-            </div>
           </div>
         </div>
       </nav>
@@ -179,29 +164,6 @@ export default function Home() {
               Transformez votre restaurant avec des menus digitaux et une prise de commande fluide. 
               Sans téléchargement d'application. Scannez et commandez.
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <a 
-                href="/signup" 
-                className="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-orange-600 text-white rounded-xl font-semibold text-lg overflow-hidden w-full sm:w-auto shadow-xl shadow-red-500/30"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="relative flex items-center justify-center gap-2">
-                  Essai gratuit
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
-              </a>
-              
-              <a 
-                href="/login" 
-                className="px-8 py-4 border border-gray-800 text-white rounded-xl font-semibold text-lg hover:bg-gray-900 transition-all w-full sm:w-auto text-center hover:border-red-500/50"
-              >
-                Connexion
-              </a>
-            </div>
 
             {/* Trust Indicators */}
             <div className="flex items-center justify-center gap-6 pt-8 text-sm text-gray-500">
@@ -501,20 +463,6 @@ export default function Home() {
           <p className="text-xl text-gray-400 mb-12">
             Rejoignez des centaines de restaurants qui ont déjà franchi le pas
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="/signup"
-              className="px-8 py-4 bg-gradient-to-r from-red-500 to-orange-600 text-white rounded-xl font-semibold text-lg hover:from-red-600 hover:to-orange-700 transition-all w-full sm:w-auto text-center shadow-xl shadow-red-500/30"
-            >
-              Essai gratuit
-            </a>
-            <a 
-              href="/login"
-              className="px-8 py-4 border border-gray-800 text-white rounded-xl font-semibold text-lg hover:bg-gray-900 hover:border-red-500/50 transition-all w-full sm:w-auto text-center"
-            >
-              Connexion
-            </a>
-          </div>
           <p className="mt-6 text-sm text-gray-500">
             Sans carte bancaire • Configuration en 5 min • Annulation à tout moment
           </p>
