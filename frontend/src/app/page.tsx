@@ -125,12 +125,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+              <div className="w-14 h-14 relative rounded-lg overflow-hidden">
+                <img src="/flexfood-8.png" alt="FlexFood Logo" className="w-full h-full object-cover" />
               </div>
-              <span className="text-xl font-semibold">FlexFood</span>
             </div>
             
             <div className="hidden md:flex items-center gap-8">
@@ -475,8 +472,9 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg" />
-                <span className="text-xl font-semibold text-white">FlexFood</span>
+                <div className="w-14 h-14 relative rounded-lg overflow-hidden">
+                  <img src="/flexfood-8.png" alt="FlexFood Logo" className="w-full h-full object-cover" />
+                </div>
               </div>
               <p className="text-sm text-gray-500">
                 Menus digitaux et commandes pour restaurants modernes

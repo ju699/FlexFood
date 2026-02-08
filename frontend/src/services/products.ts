@@ -1,6 +1,6 @@
 import { db } from "@/config/firebase";
 import { Product } from "@/utils/types";
-import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 
 const productsCol = () => collection(db, "products");
 
@@ -33,4 +33,9 @@ export const listProductsByRestaurant = async (
   );
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...(d.data() as Omit<Product, "id">) }));
+};
+
+export const getProductById = async (id: string): Promise<Product | null> => {
+  const snap = await getDoc(doc(productsCol(), id));
+  return snap.exists() ? ({ id: snap.id, ...(snap.data() as Omit<Product, "id">) }) : null;
 };

@@ -13,21 +13,23 @@ service cloud.firestore {
 
     match /restaurants/{restaurantId} {
       allow read: if true;
-      allow create, update, delete: if isOwner(restaurantId)
-        && request.resource.data.ownerId == request.auth.uid
-        && request.resource.data.name is string
-        && request.resource.data.slug is string
-        && request.resource.data.createdAt is number;
+      // Permettre create et update si l'utilisateur est authentifié et que l'ID correspond à son UID
+      allow create: if isAuthed() && request.auth.uid == restaurantId;
+      allow update: if isAuthed() && request.auth.uid == restaurantId;
+      allow delete: if isAuthed() && request.auth.uid == restaurantId;
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow create: if isAuthed() && request.resource.data.restaurantId == request.auth.uid;
+      allow update, delete: if isAuthed() && resource.data.restaurantId == request.auth.uid;
     }
 
     match /products/{productId} {
-      allow read: if resource.data.isAvailable == true || isOwner(resource.data.restaurantId);
-      allow create: if isAuthed()
-        && request.resource.data.restaurantId == request.auth.uid
-        && request.resource.data.name is string
-        && request.resource.data.price is number
-        && request.resource.data.isAvailable is bool;
-      allow update, delete: if isOwner(resource.data.restaurantId);
+      // Allow read if true (public access to products) or if owner
+      allow read: if true;
+      allow create: if isAuthed() && request.resource.data.restaurantId == request.auth.uid;
+      allow update, delete: if isAuthed() && resource.data.restaurantId == request.auth.uid;
     }
 
     match /orders/{orderId} {

@@ -30,6 +30,13 @@ export const createRestaurant = async (data: {
   return restaurant;
 };
 
+export const updateRestaurant = async (
+  id: string,
+  data: Partial<Restaurant>
+): Promise<void> => {
+  await setDoc(doc(restaurantsCol(), id), data, { merge: true });
+};
+
 export const getRestaurantByOwner = async (
   ownerId: string
 ): Promise<Restaurant | null> => {
@@ -53,3 +60,5 @@ export const getRestaurantBySlug = async (
     return null;
   }
 };
+
+
