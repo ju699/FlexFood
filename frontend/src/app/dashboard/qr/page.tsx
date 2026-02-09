@@ -4,8 +4,6 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import { useProtectedRoute } from "@/hooks/useProtectedRoute";
 import { getRestaurantByOwner } from "@/services/restaurants";
 import { Restaurant } from "@/utils/types";
-import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
 import { QRCodeSVG } from "qrcode.react";
 
 export default function QrPage() {
@@ -103,6 +101,7 @@ export default function QrPage() {
           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
           mask-composite: exclude;
+          pointer-events: none;
         }
 
         @keyframes pulse-glow {
@@ -207,7 +206,7 @@ export default function QrPage() {
                   </div>
                   <button
                     onClick={handleCopy}
-                    className="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-semibold rounded-lg transition-all shadow-lg shadow-red-500/30 hover:shadow-red-500/50 whitespace-nowrap text-sm md:text-base"
+                    className="relative z-10 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-semibold rounded-lg transition-all shadow-lg shadow-red-500/30 hover:shadow-red-500/50 whitespace-nowrap text-sm md:text-base"
                   >
                     {copied ? (
                       <span className="flex items-center justify-center gap-2">
@@ -232,7 +231,7 @@ export default function QrPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
                   onClick={handleDownload}
-                  className="flex items-center justify-center gap-3 px-4 py-3 md:px-6 md:py-4 bg-gray-900 border border-gray-800 hover:border-blue-500/50 text-white rounded-xl transition-all group"
+                  className="relative z-10 flex items-center justify-center gap-3 px-4 py-3 md:px-6 md:py-4 bg-gray-900 border border-gray-800 hover:border-blue-500/50 text-white rounded-xl transition-all group"
                 >
                   <svg className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -244,7 +243,7 @@ export default function QrPage() {
                   href={publicUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 px-4 py-3 md:px-6 md:py-4 bg-gray-900 border border-gray-800 hover:border-green-500/50 text-white rounded-xl transition-all group"
+                  className="relative z-10 flex items-center justify-center gap-3 px-4 py-3 md:px-6 md:py-4 bg-gray-900 border border-gray-800 hover:border-green-500/50 text-white rounded-xl transition-all group"
                 >
                   <svg className="w-5 h-5 text-green-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

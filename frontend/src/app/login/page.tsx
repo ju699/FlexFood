@@ -96,12 +96,9 @@ export default function LoginPage() {
 
         {/* Logo */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg flex items-center justify-center">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
+          <div className="w-10 h-10 relative rounded-lg overflow-hidden">
+            <img src="/flexfood-8.png" alt="FlexFood Logo" className="w-full h-full object-cover" />
           </div>
-          <span className="text-2xl font-bold">FlexFood</span>
         </div>
 
         {/* Card */}

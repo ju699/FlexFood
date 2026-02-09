@@ -75,13 +75,10 @@ export default function LogoutPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
-            <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl shadow-red-500/30">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-              </svg>
+            <div className="w-16 h-16 relative rounded-2xl overflow-hidden mx-auto mb-4 shadow-xl shadow-red-500/30">
+              <img src="/flexfood-8.png" alt="FlexFood Logo" className="w-full h-full object-cover" />
             </div>
           </Link>
-          <h1 className="text-2xl font-bold text-white">FlexFood</h1>
         </div>
 
         {/* Logout Card */}

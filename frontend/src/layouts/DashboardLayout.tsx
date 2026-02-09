@@ -147,13 +147,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Logo Section */}
           <div className="p-6 border-b border-gray-200 dark:border-gray-800">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+              <div className="w-10 h-10 relative rounded-lg overflow-hidden">
+                <img src="/flexfood-8.png" alt="FlexFood Logo" className="w-full h-full object-cover" />
               </div>
               <div>
-                <div className="text-lg font-bold text-foreground">FlexFood</div>
                 <div className="text-xs text-gray-500">Espace Vendeur</div>
               </div>
             </div>
@@ -214,12 +211,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="md:hidden sticky top-0 z-50 bg-background backdrop-blur-lg border-b p-4" style={{ borderColor: "var(--border-color)" }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
+              <div className="w-8 h-8 relative rounded-lg overflow-hidden">
+                <img src="/flexfood-8.png" alt="FlexFood Logo" className="w-full h-full object-cover" />
               </div>
-              <span className="text-lg font-bold text-foreground">FlexFood</span>
             </div>
             <Link href="/logout">
               <Button 

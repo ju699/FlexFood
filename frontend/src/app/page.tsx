@@ -131,10 +131,24 @@ export default function Home() {
             </div>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-sm text-gray-400 hover:text-white transition-colors">Fonctionnalités</a>
-              <a href="#pricing" className="text-sm text-gray-400 hover:text-white transition-colors">Tarifs</a>
-              <a href="#docs" className="text-sm text-gray-400 hover:text-white transition-colors">Documentation</a>
-            </div>
+                <a href="#features" className="text-sm text-gray-400 hover:text-white transition-colors">Fonctionnalités</a>
+                <a href="#pricing" className="text-sm text-gray-400 hover:text-white transition-colors">Tarifs</a>
+                <a href="#docs" className="text-sm text-gray-400 hover:text-white transition-colors">Documentation</a>
+                <a href="/login" className="text-sm text-white hover:text-red-400 transition-colors">Se connecter</a>
+                <a href="/signup" className="px-4 py-2 bg-gradient-to-r from-red-500 to-orange-600 text-white rounded-lg text-sm font-semibold hover:from-red-600 hover:to-orange-700 transition-all">S'inscrire</a>
+              </div>
+              <div className="flex md:hidden items-center gap-2">
+                <a href="/login" className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-lg text-white">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m4 0v-1a1 1 0 011-1h4a1 1 0 011 1v1" />
+                  </svg>
+                </a>
+                <a href="/signup" className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-red-500 to-orange-600 rounded-lg text-white">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                  </svg>
+                </a>
+              </div>
           </div>
         </div>
       </nav>
