@@ -242,7 +242,7 @@ export default function MenuPage() {
       <style jsx>{`
         .gradient-border {
           position: relative;
-          background: rgba(15, 15, 15, 0.6);
+          background: var(--card-bg-transparent);
           backdrop-filter: blur(12px);
         }
 
@@ -323,7 +323,7 @@ export default function MenuPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Gestion du Menu</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-2">Gestion du Menu</h1>
             <p className="text-gray-400">Organisez vos catégories et plats</p>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-xl">
@@ -343,7 +343,7 @@ export default function MenuPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-white">Catégories</h2>
+            <h2 className="text-2xl font-bold text-foreground">Catégories</h2>
           </div>
 
           <div className="flex gap-3 mb-6">
@@ -463,10 +463,10 @@ export default function MenuPage() {
               <p className="text-sm">Cliquez sur "Nouveau Plat" pour commencer</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {products.map(p => (
-                <div key={p.id} className="product-card flex flex-col md:flex-row gap-4 border border-gray-800 p-4 rounded-xl bg-black/30">
-                  <div className="w-24 h-24 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex-shrink-0 overflow-hidden">
+                <div key={p.id} className="product-card flex flex-col md:flex-row gap-4 border border-gray-800 p-4 rounded-xl bg-black/30 h-full">
+                  <div className="w-full aspect-square md:w-24 md:h-24 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg md:rounded-xl flex-shrink-0 overflow-hidden">
                     {p.image ? (
                       <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
                     ) : (
@@ -474,98 +474,88 @@ export default function MenuPage() {
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span className="text-xs mt-1">No img</span>
+                        <span className="text-[10px] md:text-xs mt-1">No img</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-3">
-                      <div>
-                        <h3 className="font-bold text-xl text-white mb-2">{p.name}</h3>
-                        <div className="flex flex-wrap items-center gap-3 text-sm text-gray-400">
-                          {p.category && (
-                            <span className="flex items-center gap-1">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                  <div className="flex-1 flex flex-col justify-between min-w-0">
+                    <div>
+                      <div className="flex flex-col md:flex-row md:items-start justify-between gap-1 md:gap-4 mb-2 md:mb-3">
+                        <div>
+                          <h3 className="font-bold text-sm md:text-xl text-white mb-1 md:mb-2 line-clamp-1 md:line-clamp-none">{p.name}</h3>
+                          <div className="flex flex-wrap items-center gap-1 md:gap-3 text-[10px] md:text-sm text-gray-400">
+                            {p.category && (
+                              <span className="flex items-center gap-0.5 md:gap-1">
+                                <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                </svg>
+                                <span className="truncate max-w-[60px] md:max-w-none">{p.category}</span>
+                              </span>
+                            )}
+                            <span className="flex items-center gap-0.5 md:gap-1 font-semibold text-orange-400">
+                              <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
-                              {p.category}
+                              {p.price.toFixed(0)}
                             </span>
-                          )}
-                          <span className="flex items-center gap-1 font-semibold text-orange-400">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            {p.price.toFixed(2)} FCFA
-                          </span>
-                          {p.cookingTime && (
-                            <span className="flex items-center gap-1">
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              {p.cookingTime} min
-                            </span>
-                          )}
+                          </div>
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
-                        <button 
-                          onClick={() => toggleAvailability(p)} 
-                          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                            p.isAvailable 
-                              ? "bg-green-500/20 text-green-400 border border-green-500/30 hover:bg-green-500/30" 
-                              : "bg-gray-800 text-gray-500 border border-gray-700 hover:bg-gray-700"
-                          }`}
-                        >
-                          {p.isAvailable ? (
-                            <span className="flex items-center gap-1">
-                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                              </svg>
-                              Disponible
+                      {p.description && (
+                        <p className="text-xs md:text-sm text-gray-400 mb-2 md:mb-3 line-clamp-2 md:line-clamp-none hidden md:block">{p.description}</p>
+                      )}
+
+                      {p.tags && p.tags.length > 0 && (
+                        <div className="hidden md:flex flex-wrap gap-2">
+                          {p.tags.map(t => (
+                            <span key={t} className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20">
+                              {t}
                             </span>
-                          ) : (
-                            <span className="flex items-center gap-1">
-                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                              </svg>
-                              Indisponible
-                            </span>
-                          )}
-                        </button>
-                        <button 
-                          onClick={() => startEditProduct(p)} 
-                          className="px-4 py-2 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-lg hover:bg-blue-500/30 transition-all text-sm font-medium"
-                        >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                          </svg>
-                        </button>
-                        <button 
-                          onClick={() => handleDeleteProduct(p.id)} 
-                          className="px-4 py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg hover:bg-red-500/30 transition-all text-sm font-medium"
-                        >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </button>
-                      </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
-                    {p.description && (
-                      <p className="text-sm text-gray-400 mb-3">{p.description}</p>
-                    )}
-
-                    {p.tags && p.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {p.tags.map(t => (
-                          <span key={t} className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    <div className="flex gap-1 md:gap-2 mt-2 md:mt-0">
+                      <button 
+                        onClick={() => toggleAvailability(p)} 
+                        className={`flex-1 md:flex-none flex items-center justify-center px-2 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all ${
+                          p.isAvailable 
+                            ? "bg-green-500/20 text-green-400 border border-green-500/30 hover:bg-green-500/30" 
+                            : "bg-gray-800 text-gray-500 border border-gray-700 hover:bg-gray-700"
+                        }`}
+                        title={p.isAvailable ? "Marquer indisponible" : "Marquer disponible"}
+                      >
+                        <svg className="w-3 h-3 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20">
+                          {p.isAvailable ? (
+                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          ) : (
+                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                          )}
+                        </svg>
+                        <span className="ml-1 hidden md:inline">{p.isAvailable ? "Disponible" : "Indisponible"}</span>
+                      </button>
+                      <button 
+                        onClick={() => startEditProduct(p)} 
+                        className="p-1.5 md:px-4 md:py-2 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-lg hover:bg-blue-500/30 transition-all"
+                        title="Modifier"
+                      >
+                        <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      </button>
+                      <button 
+                        onClick={() => handleDeleteProduct(p.id)} 
+                        className="p-1.5 md:px-4 md:py-2 bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg hover:bg-red-500/30 transition-all"
+                        title="Supprimer"
+                      >
+                        <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}

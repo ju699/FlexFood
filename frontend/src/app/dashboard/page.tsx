@@ -34,7 +34,7 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-gray-400">Chargement...</p>
@@ -81,10 +81,10 @@ export default function DashboardPage() {
         }
       `}</style>
 
-      <div className="max-w-6xl mx-auto p-6">
+      <div className="max-w-6xl mx-auto p-6 bg-background">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">
+          <h1 className="text-4xl font-bold text-foreground mb-2">
             Tableau de bord
           </h1>
           <p className="text-gray-400">
@@ -104,17 +104,17 @@ export default function DashboardPage() {
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                  <h2 className="text-2xl font-bold text-foreground mb-2">
                     Bienvenue sur FlexFood ! 🎉
                   </h2>
-                  <p className="text-gray-400">
+                  <p className="text-foreground">
                     Vous êtes à quelques clics de digitaliser votre restaurant. Créez votre établissement pour accéder à toutes les fonctionnalités.
                   </p>
                 </div>
               </div>
 
               {/* Features List */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-3 mb-8">
                 {[
                   { icon: "📱", text: "Menu digital responsive" },
                   { icon: "🔔", text: "Notifications en temps réel" },
@@ -203,7 +203,7 @@ export default function DashboardPage() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <h2 className="text-2xl font-bold text-white">{restaurant.name}</h2>
+                      <h2 className="text-2xl font-bold text-foreground">{restaurant.name}</h2>
                       <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-medium rounded-full flex items-center gap-1">
                         <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
                         Actif
@@ -242,7 +242,7 @@ export default function DashboardPage() {
             {/* Quick Actions Grid */}
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">Actions rapides</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
                   {
                     href: "/dashboard/stats",

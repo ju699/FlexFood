@@ -265,7 +265,7 @@ export default function ProfilePage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Profil du restaurant</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-2">Profil du restaurant</h1>
             <p className="text-gray-400">Gérez les informations de votre établissement</p>
           </div>
           <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-xl">

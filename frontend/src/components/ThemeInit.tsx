@@ -5,9 +5,9 @@
    useEffect(() => {
      try {
        const stored = localStorage.getItem("theme");
-       const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-       const shouldDark = stored ? stored === "dark" : prefersDark;
-       document.documentElement.classList.toggle("dark", shouldDark);
+      const shouldDark = stored ? stored === "dark" : false;
+      document.documentElement.classList.remove("dark", "light");
+      document.documentElement.classList.add(shouldDark ? "dark" : "light");
      } catch {}
    }, []);
    return null;

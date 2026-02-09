@@ -127,6 +127,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         }
         
         /* Dark mode specific overrides via CSS variables handled in globals.css or here */
+
+        /* Hide scrollbars on mobile nav */
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
       `}</style>
 
       {/* Noise Texture - Only visible in dark mode or low opacity in light */}
@@ -202,7 +211,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </aside>
 
         {/* Mobile Header */}
-        <div className="md:hidden sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-gray-800 p-4">
+        <div className="md:hidden sticky top-0 z-50 bg-background backdrop-blur-lg border-b p-4" style={{ borderColor: "var(--border-color)" }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg flex items-center justify-center">
@@ -210,7 +219,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-white">FlexFood</span>
+              <span className="text-lg font-bold text-foreground">FlexFood</span>
             </div>
             <Link href="/logout">
               <Button 
@@ -225,16 +234,31 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </div>
 
+      {/* Mobile Navigation */}
+      <div className="md:hidden border-b border-gray-800 bg-background">
+        <nav className="flex gap-2 overflow-x-auto p-3 scrollbar-hide">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm whitespace-nowrap ${
+                isActive(item.href)
+                  ? "bg-gradient-to-r from-red-500/20 to-orange-600/20 text-foreground border border-red-500/30"
+                  : "bg-transparent text-gray-500 dark:text-gray-400 border border-gray-800"
+              }`}
+            >
+              {item.icon}
+              <span>{item.label}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+
         {/* Main Content */}
         <main className="min-h-screen">
           {/* Top Bar */}
           <div className="hidden md:flex items-center justify-between p-6 border-b border-gray-800">
-            <div className="flex items-center gap-2 text-xs text-gray-500">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>UID: {user?.uid?.slice(0, 8)}...</span>
-            </div>
+          <div />
             
             <div className="flex items-center gap-3">
               {/* Notifications */}

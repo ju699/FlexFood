@@ -3,7 +3,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
   --color-primary: #e50914;
   --color-black: #000000;
   --color-white: #ffffff;
@@ -47,4 +47,14 @@ body {
   --sidebar-bg: rgba(10, 10, 10, 0.8);
   --border-color: rgba(255, 255, 255, 0.08);
   --card-bg-transparent: rgba(30, 30, 30, 0.8);
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --sidebar-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --card-bg-transparent: rgba(255, 255, 255, 0.8);
 }

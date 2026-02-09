@@ -29,7 +29,7 @@ export default function ProductDetailsPage({
 
   if (!restaurant || !product) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-gray-400 text-lg">Chargement du produit...</p>
@@ -50,7 +50,7 @@ export default function ProductDetailsPage({
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-background">
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -106,12 +106,12 @@ export default function ProductDetailsPage({
       <div className="noise"></div>
 
       {/* Header with Back Button */}
-      <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-gray-900">
+      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center gap-4">
             <Link 
               href={`/r/${slug}`}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900 border border-gray-800 rounded-xl text-white hover:bg-gray-800 hover:border-red-500/50 transition-all"
+              className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl text-foreground hover:border-red-500/50 transition-all"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

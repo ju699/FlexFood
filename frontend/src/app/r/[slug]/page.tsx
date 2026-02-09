@@ -55,7 +55,7 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
 
   if (!restaurant) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="text-gray-400 text-lg">Chargement du menu...</p>
@@ -65,7 +65,7 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-background">
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -84,7 +84,7 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
 
         .gradient-border {
           position: relative;
-          background: rgba(15, 15, 15, 0.6);
+          background: var(--card-bg-transparent);
           backdrop-filter: blur(12px);
         }
 
@@ -149,11 +149,11 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
               alt="Cover" 
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/60"></div>
           </>
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-red-500 via-orange-500 to-red-600 relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40"></div>
           </div>
         )}
 
@@ -195,7 +195,7 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
         <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 pb-24">
           {/* Restaurant Info */}
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               {restaurant.name}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-sm">
@@ -284,7 +284,7 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
               <p className="text-gray-600 text-sm">Cette catégorie est vide pour le moment</p>
             </div>
           ) : (
-            <div className="grid gap-4 md:gap-5">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-5">
               {filteredProducts.map((p) => (
                 <div 
                   key={p.id}
@@ -294,9 +294,9 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
                   tabIndex={0}
                   onKeyDown={(e) => { if (e.key === "Enter") router.push(`/r/${slug}/p/${p.id}`); }}
                 >
-                  <div className="flex flex-col sm:flex-row gap-4 p-4 sm:p-5">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 p-2 sm:p-5 h-full">
                     {/* Product Image */}
-                    <div className="w-full sm:w-32 h-32 sm:h-32 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex-shrink-0 overflow-hidden relative group">
+                    <div className="w-full sm:w-32 aspect-square sm:aspect-auto sm:h-32 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex-shrink-0 overflow-hidden relative group">
                       {p.image ? (
                         <>
                           <img 
@@ -308,47 +308,46 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
                         </>
                       ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center text-gray-600">
-                          <svg className="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-8 h-8 sm:w-12 sm:h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          <span className="text-xs">Pas d'image</span>
+                          <span className="text-[10px] sm:text-xs">Pas d'image</span>
                         </div>
                       )}
                       
                       {/* Cooking Time Badge */}
                       {p.cookingTime && (
-                        <div className="absolute top-2 right-2 px-2 py-1 bg-black/70 backdrop-blur-sm rounded-lg flex items-center gap-1">
+                        <div className="absolute top-2 right-2 px-1.5 py-0.5 sm:px-2 sm:py-1 bg-black/70 backdrop-blur-sm rounded-lg flex items-center gap-1">
                           <svg className="w-3 h-3 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-xs text-white font-medium">{p.cookingTime}min</span>
+                          <span className="text-[10px] sm:text-xs text-white font-medium">{p.cookingTime}min</span>
                         </div>
                       )}
                     </div>
 
-                    {/* Product Info */}
                     <div className="flex-1 flex flex-col justify-between min-w-0">
                       <div>
-                        <div className="flex items-start justify-between gap-3 mb-2">
-                          <h3 className="font-bold text-lg sm:text-xl text-white leading-tight">
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-3 mb-1 sm:mb-2">
+                          <h3 className="font-bold text-sm sm:text-xl text-foreground leading-tight line-clamp-2">
                             {p.name}
                           </h3>
                           {p.category && (
-                            <span className="px-2 py-1 bg-purple-500/10 border border-purple-500/20 rounded-lg text-xs text-purple-400 whitespace-nowrap flex-shrink-0">
+                            <span className="self-start px-1.5 py-0.5 sm:px-2 sm:py-1 bg-purple-500/10 border border-purple-500/20 rounded-md sm:rounded-lg text-[10px] sm:text-xs text-purple-400 whitespace-nowrap flex-shrink-0">
                               {p.category}
                             </span>
                           )}
                         </div>
                         
                         {p.description && (
-                          <p className="text-sm text-gray-400 line-clamp-2 mb-3 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-gray-400 line-clamp-2 mb-2 sm:mb-3 leading-relaxed hidden sm:block">
                             {p.description}
                           </p>
                         )}
 
                         {/* Tags */}
                         {p.tags && p.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-3">
+                          <div className="hidden sm:flex flex-wrap gap-2 mb-3">
                             {p.tags.map(t => (
                               <span 
                                 key={t} 
@@ -362,23 +361,22 @@ export default function PublicMenuPage({ params }: { params: Promise<{ slug: str
                       </div>
 
                       {/* Price and Action */}
-                      <div className="flex items-center justify-between gap-4 mt-4 pt-4 border-t border-gray-800">
+                      <div className="flex items-center justify-between gap-2 sm:gap-4 mt-2 sm:mt-4 pt-2 sm:pt-4 border-t border-gray-800">
                         <div className="flex flex-col">
-                          <span className="text-xs text-gray-500 mb-1">Prix</span>
-                          <span className="font-bold text-2xl bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
-                            {p.price.toFixed(0)} FCFA
+                          <span className="text-[10px] sm:text-xs text-gray-500 mb-0.5 sm:mb-1">Prix</span>
+                          <span className="font-bold text-base sm:text-2xl bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+                            {p.price.toFixed(0)} <span className="text-xs sm:text-lg">FCFA</span>
                           </span>
                         </div>
                         
                         <button
                           onClick={(e) => { e.stopPropagation(); handleOrder(p); }}
-                          className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-semibold rounded-xl shadow-lg shadow-red-500/30 transition-all hover:shadow-red-500/50 hover:scale-105"
+                          className="group flex items-center justify-center gap-2 w-8 h-8 sm:w-auto sm:h-auto sm:px-6 sm:py-3 bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-semibold rounded-lg sm:rounded-xl shadow-lg shadow-red-500/30 transition-all hover:shadow-red-500/50 hover:scale-105"
                         >
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                           </svg>
                           <span className="hidden sm:inline">Commander</span>
-                          <span className="sm:hidden">WhatsApp</span>
                         </button>
                       </div>
                     </div>

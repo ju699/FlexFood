@@ -18,10 +18,12 @@ export default function SettingsPage() {
 
   const toggleTheme = () => {
     if (isDark) {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark", "light");
+      document.documentElement.classList.add("light");
       try { localStorage.setItem("theme", "light"); } catch {}
       setIsDark(false);
     } else {
+      document.documentElement.classList.remove("dark", "light");
       document.documentElement.classList.add("dark");
       try { localStorage.setItem("theme", "dark"); } catch {}
       setIsDark(true);
@@ -48,7 +50,7 @@ export default function SettingsPage() {
       <style jsx>{`
         .gradient-border {
           position: relative;
-          background: rgba(15, 15, 15, 0.6);
+          background: var(--card-bg-transparent);
           backdrop-filter: blur(12px);
         }
 
@@ -128,7 +130,7 @@ export default function SettingsPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-white mb-2">Réglages</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-2">Réglages</h1>
             <p className="text-gray-400">Gérez vos préférences et paramètres de compte</p>
           </div>
           <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-xl flex items-center justify-center">
@@ -147,7 +149,7 @@ export default function SettingsPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-white">Préférences</h2>
+            <h2 className="text-2xl font-bold text-foreground">Préférences</h2>
           </div>
 
           <div className="space-y-4">
@@ -166,7 +168,7 @@ export default function SettingsPage() {
                   )}
                 </div>
                 <div>
-                  <div className="font-semibold text-white mb-1">Thème de l'interface</div>
+                  <div className="font-semibold text-foreground mb-1">Thème de l'interface</div>
                   <div className="text-sm text-gray-400">
                     {isDark ? "Mode sombre activé" : "Mode clair activé"}
                   </div>
@@ -220,7 +222,7 @@ export default function SettingsPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-white">Compte</h2>
+            <h2 className="text-2xl font-bold text-foreground">Compte</h2>
           </div>
 
           <div className="space-y-4">
